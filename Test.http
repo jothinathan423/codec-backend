@@ -3,8 +3,8 @@ POST http://localhost:5000/api/userregister
 Content-Type: application/json
 
 {
-  "name": "jothinathan",
-  "email": "jothinathannagarajan@gmail.com",
+  "name": "Poovu",
+  "email": "poovu@gmail.com",
   "password": "123",
   "college" : "muthayammal engineering college"
   
@@ -36,5 +36,14 @@ Content-Type: application/json
     "email":"jothinathannagarajan@gmail.com",
     "password":"123"
 }
+###
+POST http://localhost:5000/api/Problem_Input
+Content-Type: application/json
 
+{
+  "ProblemTitle": "Poovu 2",
+  "ProblemDescription": "poovu22@gmail.com",
+  "ProblemExamples": "1234"
+  
+}
 ###

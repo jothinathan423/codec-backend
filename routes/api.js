@@ -1,7 +1,20 @@
 const express = require('express');
 const User = require('../models/User'); 
 const router = express.Router();
-const Admin = require('../models/Admin')
+const Admin = require('../models/Admin');
+const ProblemInput  = require('../models/Problems_input');
+
+
+router.post('/Problem_Input', async (req ,res) => {
+    const {ProblemTitle, ProblemDescription, ProblemExamples} =req.body;
+    
+        const NewProblem = new ProblemInput ({ProblemTitle, ProblemDescription, ProblemExamples});
+        await NewProblem.save();
+        res.status(201).json({message:'New problem sucessfully added', Problem: NewProblem});
+    /*catch(error){
+        res.status(500).json({message:'please enter valid prolem',error: error.message});
+    }*/
+});
 
 router.post('/userregister', async (req, res) => {
     const { name, email, password, college } = req.body;
