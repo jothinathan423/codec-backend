@@ -4,7 +4,7 @@ const router = express.Router();
 const Admin = require('../models/Admin');
 const ProblemInput  = require('../models/Problems_input');
 
-
+//get all users
 router.get('/userregister_list',async(req, res) => {
     const ListUsers = await User.find({});
     try{
@@ -15,11 +15,11 @@ router.get('/userregister_list',async(req, res) => {
     }
 });
 
-
+//insert new problem statement
 router.post('/Problem_Input', async (req ,res) => {
-    const {ProblemTitle, ProblemDescription, ProblemExamples} =req.body;
+    const { ProblemTitle, ProblemTopic, Difficulty, ProblemDescription, ProblemExamples, Spacecomplexity, Timecomplexity } =req.body;
     try{
-        const NewProblem = new ProblemInput ({ProblemTitle, ProblemDescription, ProblemExamples});
+        const NewProblem = new ProblemInput({ ProblemTitle, ProblemTopic, Difficulty, ProblemDescription, ProblemExamples, Spacecomplexity, Timecomplexity });
         await NewProblem.save();
         res.status(201).json({message:'New problem sucessfully added', Problem: NewProblem});
     }
@@ -28,7 +28,44 @@ router.post('/Problem_Input', async (req ,res) => {
     }
 });
 
+//get all problems
+router.get('/allproblems', async (req, res) => {
+    const ListUsers = await ProblemInput.find({});
+    try {
+        res.status(200).json({ ListUsers });
+    }
+    catch (error) {
+        res.status(500).json({ message: 'error users', error: error.message });
+    }
+});
 
+//filter problem by topic eg:array
+router.get('/allproblems/topics/:topic', async (req, res) => {
+    const parameter = req.params.topic;
+    const ListUsers = await ProblemInput.find({ ProblemTopic: parameter });
+    try {
+        res.status(200).json({ ListUsers });
+    }
+    catch (error) {
+        res.status(500).json({ message: 'error users', error: error.message });
+    }
+});
+
+//filter problem by Difficulty eg:easy
+router.get('/allproblems/difficulty/:topic', async (req, res) => {
+    const parameter = req.params.topic;
+    const ListUsers = await ProblemInput.find({ Difficulty: parameter });
+    try {
+        res.status(200).json({ ListUsers });
+    }
+    catch (error) {
+        res.status(500).json({ message: 'error users', error: error.message });
+    }
+});
+
+
+
+//new user registeration
 router.post('/userregister', async (req, res) => {
     const { name, email, password, college } = req.body;
     try {
@@ -44,7 +81,7 @@ router.post('/userregister', async (req, res) => {
     }
 });
 
-
+//user login
 router.post('/userlogin', async (req, res) => {
     const { email, password } = req.body;
     try {
@@ -64,6 +101,8 @@ router.post('/userlogin', async (req, res) => {
     
 });
 
+
+//admin register
 router.post('/adminregister', async (req, res) => {
     try {
         const { name, email, password } = req.body;
@@ -81,7 +120,7 @@ router.post('/adminregister', async (req, res) => {
     }
 })
 
-
+//admin login
 router.post('/adminlogin', async (req, res) => {
     try {
         const { email, password } = req.body;

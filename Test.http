@@ -3,8 +3,8 @@ POST http://localhost:5000/api/userregister
 Content-Type: application/json
 
 {
-  "name": "Poovu",
-  "email": "poovu@gmail.com",
+  "name": "harish123",
+  "email": "harish@gmail.com",
   "password": "123",
   "college" : "muthayammal engineering college"
   
@@ -41,8 +41,8 @@ POST http://localhost:5000/api/Problem_Input
 Content-Type: application/json
 
 {
-  "ProblemTitle": "Poovu 2",
-  "ProblemDescription": "poovu22@gmail.com",
+  "ProblemTitle": "linear search",
+  "ProblemDescription": "Given an array arr of integers, find all the elements that occur more than once in the array. If no element repeats, return an empty array.",
   "ProblemExamples": "1234"
   
 }
@@ -90,10 +90,22 @@ POST http://localhost:5000/api/Problem_Input
 Content-Type: application/json
 
 {
-  "ProblemTitle": "Poovu 2",
-  "ProblemDescription": "poovu22@gmail.com",
-  "ProblemExamples": "1234"
+  "ProblemTitle": "Missing in Array",
+  "ProblemTopic": "Array",
+  "Difficulty":"Easy",
+  "ProblemDescription": "You are given an array arr of size n - 1 that contains distinct integers in the range from 1 to n (inclusive). This array represents a permutation of the integers from 1 to n with one element missing. Your task is to identify and return the missing element.",
+  "ProblemExamples": "Input: arr[] = [1, 2, 3, 5] Output: 4 Explanation: All the numbers from 1 to 5 are present except 4.",
+  "Spacecomplexity": "O(1)",
+  "Timecomplexity": "O(n)"
   
 }
 ###
 GET http://localhost:5000/api/userregister_list
+
+###
+GET http://localhost:5000/api/allproblems
+###
+GET http://localhost:5000/api/allproblems/topics/Array
+###
+GET http://localhost:5000/api/allproblems/difficulty/Easy
+##
