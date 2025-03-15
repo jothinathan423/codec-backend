@@ -56,7 +56,7 @@ Content-Type: application/json
   "email": "poovu@gmail.com",
   "password": "123",
   "college" : "muthayammal engineering college"
-  
+
 }
 ###
 POST http://localhost:5000/api/userlogin
