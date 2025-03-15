@@ -17,6 +17,18 @@ const UserSchema = new mongoose.Schema({
     college: {
         type: String,
         required: true
+    },
+    points: {
+        type: String,
+        required: true
+    },
+    overallrank: {
+        type: String,
+        required: true
+    },
+    collegerank: {
+        type: String,
+        required: true
     }
 });
 
