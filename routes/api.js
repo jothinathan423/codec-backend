@@ -5,16 +5,29 @@ const Admin = require('../models/Admin');
 const ProblemInput  = require('../models/Problems_input');
 
 
+router.get('/userregister_list',async(req, res) => {
+    const ListUsers = await User.find({});
+    try{
+        res.status(200).json({ListUsers});
+    }
+    catch (error) {
+        res.status(500).json({ message: 'error users', error: error.message });
+    }
+});
+
+
 router.post('/Problem_Input', async (req ,res) => {
     const {ProblemTitle, ProblemDescription, ProblemExamples} =req.body;
-    
+    try{
         const NewProblem = new ProblemInput ({ProblemTitle, ProblemDescription, ProblemExamples});
         await NewProblem.save();
         res.status(201).json({message:'New problem sucessfully added', Problem: NewProblem});
-    /*catch(error){
+    }
+    catch(error){
         res.status(500).json({message:'please enter valid prolem',error: error.message});
-    }*/
+    }
 });
+
 
 router.post('/userregister', async (req, res) => {
     const { name, email, password, college } = req.body;
